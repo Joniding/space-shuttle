@@ -51,8 +51,14 @@ gpgkey=https://nginx.org/keys/nginx_signing.key
 # Enable default nginx stable packages
 sudo yum-config-manager --enable nginx-mainline
 
+# Installation problems
+  * if you installation problems: 'name=nginx stable repo \n', please copy single line or visit                  
+    http://nginx.org/en/linux_packages.html#RHEL-CentOS copy
+  
+
 # start install nginx
 sudo yum install nginx -y
+
 
 ```
 
@@ -161,7 +167,8 @@ server {
 
     location ~ \.php$ {
         try_files $uri =404;
-        fastcgi_pass unix:/var/run/php-fpm/php-fpm.sock;
+        #fastcgi_pass unix:/var/run/php-fpm/php-fpm.sock;
+        fastcgi_pass 127.0.0.1:9000;
         fastcgi_index index.php;
         fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
         include fastcgi_params;
